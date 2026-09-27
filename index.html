@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RIA // Intelligence Workspace</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b0e12;color:#e9edf2;font-family:Inter,Segoe UI,Arial,sans-serif}
+.app{max-width:1400px;margin:auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:4px 0 18px;border-bottom:1px solid #293039}
+.brand{font-size:24px;font-weight:700;letter-spacing:3px}.brand span{font-size:11px;color:#8e9aa6;display:block;letter-spacing:2px;margin-top:4px}
+.status{font-size:12px;color:#9de2b2}.status i{display:inline-block;width:7px;height:7px;background:#72d89a;border-radius:50%;margin-right:7px}
+.layout{display:grid;grid-template-columns:250px 1fr 300px;gap:16px;margin-top:16px}
+.panel{background:#11161c;border:1px solid #293039;border-radius:10px;padding:16px}.panel h3{font-size:11px;letter-spacing:1.8px;color:#aab5bf;margin:0 0 14px}
+.nav button{display:block;width:100%;text-align:left;background:transparent;color:#b8c1c9;border:0;border-radius:7px;padding:11px;margin:3px 0;cursor:pointer}.nav button.active,.nav button:hover{background:#1b232b;color:#fff}
+.main{display:grid;grid-template-columns:1fr 1fr;gap:16px}.hero{grid-column:1/-1;padding:22px;background:linear-gradient(135deg,#111a22,#101417)}
+.hero h1{margin:0 0 8px;font-size:30px;font-weight:500}.hero p{color:#9aa7b1;margin:0;max-width:720px;line-height:1.55}
+.metric{font-size:29px;font-weight:600}.muted{font-size:12px;color:#85929d;line-height:1.5}
+.list{margin:0;padding:0;list-style:none}.list li{padding:8px 0;border-bottom:1px solid #222a31;font-size:13px}.list li:last-child{border:0}
+textarea,input{width:100%;background:#0a0e12;color:#edf4f8;border:1px solid #303942;border-radius:7px;padding:11px;outline:none}
+textarea{height:115px;resize:vertical}button.action{background:#e8edf1;color:#101419;border:0;padding:10px 15px;border-radius:6px;margin-top:9px;cursor:pointer;font-weight:600}
+.result{margin-top:12px;background:#0b1015;border-left:2px solid #8ca3b5;padding:12px;font-size:13px;line-height:1.55;min-height:50px}
+.tag{display:inline-block;border:1px solid #35404a;padding:5px 8px;border-radius:5px;margin:3px;color:#c3ccd3;font-size:11px}
+.flow{display:flex;flex-direction:column;gap:7px}.step{padding:9px;background:#0c1116;border:1px solid #29343d;border-radius:6px;font-size:12px}.step b{color:#dfe7ed}
+.footer{margin-top:16px;text-align:center;color:#65727d;font-size:10px;letter-spacing:1px}
+@media(max-width:1050px){.layout{grid-template-columns:190px 1fr}.right{grid-column:1/-1}.main{grid-template-columns:1fr}}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.main{grid-template-columns:1fr}.hero{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand">RIA <span>PERSONAL INTELLIGENCE WORKSPACE</span></div>
+  <div class="status"><i></i>LOCAL SYSTEM READY</div>
+</header>
+
+<div class="layout">
+<aside class="panel nav">
+<h3>WORKSPACE</h3>
+<button class="active">Overview</button>
+<button>Professional Profile</button>
+<button>Knowledge Vault</button>
+<button>Analysis Lab</button>
+<button>Challenge Mode</button>
+<button>Language Tools</button>
+<h3 style="margin-top:22px">DOMAINS</h3>
+<button>Accounting</button><button>CAD / Engineering</button><button>Office & Digital</button><button>Caregiving</button>
+</aside>
+
+<main class="main">
+<section class="panel hero">
+<h1>RIA Intelligence Workspace</h1>
+<p>A personal knowledge system that organizes professional experience, connects skills across different fields, and turns information into structured analysis.</p>
+</section>
+
+<section class="panel">
+<h3>PROFESSIONAL COVERAGE</h3>
+<div class="metric">05</div><div class="muted">knowledge domains</div>
+</section>
+<section class="panel">
+<h3>EXPERIENCE INDEX</h3>
+<div class="metric">18.5+ yrs</div><div class="muted">combined accounting + caregiving experience</div>
+</section>
+
+<section class="panel">
+<h3>KNOWLEDGE VAULT</h3>
+<ul class="list">
+<li>Accounting & Finance</li><li>CAD / CATIA V5 / Moldflow</li><li>MS Office</li><li>Photoshop / CapCut</li><li>Caregiving / 初任者研修</li>
+</ul>
+</section>
+
+<section class="panel">
+<h3>SKILL CONNECTIONS</h3>
+<div class="tag">Accounting</div><div class="tag">QuickBooks</div><div class="tag">Excel</div><div class="tag">CAD</div><div class="tag">CATIA V5</div><div class="tag">Moldflow</div><div class="tag">Creative</div><div class="tag">Care</div>
+<p class="muted">RIA looks for relationships between documented skills rather than treating each skill as an isolated item.</p>
+</section>
+
+<section class="panel" style="grid-column:1/-1">
+<h3>ANALYSIS LAB</h3>
+<textarea id="q" placeholder="Ask RIA to analyze your professional knowledge..."></textarea>
+<button class="action" onclick="runAnalysis()">RUN ANALYSIS</button>
+<div id="result" class="result">Ready for an analysis request.</div>
+</section>
+</main>
+
+<aside class="panel right">
+<h3>INTELLIGENCE PROCESS</h3>
+<div class="flow">
+<div class="step"><b>01 · INPUT</b><br>Question or information</div>
+<div class="step"><b>02 · CLASSIFY</b><br>Identify topic and domain</div>
+<div class="step"><b>03 · CONNECT</b><br>Relate relevant knowledge</div>
+<div class="step"><b>04 · ANALYZE</b><br>Separate facts from interpretation</div>
+<div class="step"><b>05 · REVIEW</b><br>Human verification</div>
+</div>
+<h3 style="margin-top:24px">PROFILE SNAPSHOT</h3>
+<ul class="list">
+<li><b>Education:</b> BS Accountancy</li>
+<li><b>Accounting:</b> 15 years</li>
+<li><b>Caregiving:</b> 3.5 years</li>
+<li><b>Certifications:</b> QuickBooks</li>
+<li><b>Technical:</b> CATIA V5, Moldflow</li>
+<li><b>Digital:</b> Excel, Word, PowerPoint, Photoshop, CapCut</li>
+<li><b>Training:</b> 初任者研修</li>
+</ul>
+</aside>
+</div>
+<div class="footer">RIA AI // PERSONAL KNOWLEDGE SYSTEM</div>
+</div>
+
+<script>
+function runAnalysis(){
+ const q=document.getElementById('q').value.trim();
+ const r=document.getElementById('result');
+ if(!q){r.textContent="Please enter a question.";return}
+ r.innerHTML="<b>ANALYSIS RESULT</b><br><br>"+
+ "RIA identified this as a professional-profile question. The available knowledge shows a multi-domain background spanning accounting, technical/CAD work, digital tools and caregiving.<br><br>"+
+ "<b>Context:</b> The system can organize these documented experiences and compare their relationships.<br><br>"+
+ "<span style='color:#7f8b95'>Prototype mode: this interface is not yet connected to a live AI model or external data source.</span>";
+}
+</script>
+</body>
+</html>
